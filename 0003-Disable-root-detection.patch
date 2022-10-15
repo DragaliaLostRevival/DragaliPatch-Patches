@@ -1,0 +1,20 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: LukeFZ <17146677+LukeFZ@users.noreply.github.com>
+Date: Sat, 15 Oct 2022 13:12:48 +0200
+Subject: [PATCH] Disable root detection
+
+
+diff --git a/smali_classes2/jp/co/cygames/androidroot/CheckApp.smali b/smali_classes2/jp/co/cygames/androidroot/CheckApp.smali
+index 84a78f435af1462c81423bda47709758ad54cb8a..5eef81e507e8fda32ffe202424c9c7c7123e2d30 100644
+--- a/smali_classes2/jp/co/cygames/androidroot/CheckApp.smali
++++ b/smali_classes2/jp/co/cygames/androidroot/CheckApp.smali
+@@ -70,6 +70,9 @@
+ .method public static isRootUser()Z
+     .locals 4
+ 
++    const/4 v1, 0x0
++    return v1
++
+     .line 16
+     sget-object v0, Lcom/unity3d/player/UnityPlayer;->currentActivity:Landroid/app/Activity;
+ 

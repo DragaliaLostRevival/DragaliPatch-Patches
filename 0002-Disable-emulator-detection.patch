@@ -1,0 +1,20 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: LukeFZ <17146677+LukeFZ@users.noreply.github.com>
+Date: Sat, 15 Oct 2022 13:11:50 +0200
+Subject: [PATCH] Disable emulator detection
+
+
+diff --git a/smali/com/framgia/android/emulator/EmulatorDetector.smali b/smali/com/framgia/android/emulator/EmulatorDetector.smali
+index d0d45e5752dc0dda4ec4067e3fc1b6b0999251a2..a6a6dbcd0cb83213a5af17a3bcb8c772a523ce60 100644
+--- a/smali/com/framgia/android/emulator/EmulatorDetector.smali
++++ b/smali/com/framgia/android/emulator/EmulatorDetector.smali
+@@ -1632,6 +1632,9 @@
+ .method private detect()Z
+     .locals 3
+ 
++    const/4 v0, 0x0
++    return v0
++
+     .line 202
+     invoke-static {}, Lcom/framgia/android/emulator/EmulatorDetector;->getDeviceInfo()Ljava/lang/String;
+ 
