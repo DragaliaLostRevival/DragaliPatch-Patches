@@ -1,0 +1,24 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: LukeFZ <17146677+LukeFZ@users.noreply.github.com>
+Date: Sun, 4 Jun 2023 00:59:38 +0200
+Subject: [PATCH] Add loading of nativepatches support library
+
+
+diff --git a/smali_classes2/com/unity3d/player/UnityPlayerActivity.smali b/smali_classes2/com/unity3d/player/UnityPlayerActivity.smali
+index 43fa50003f89232cbbbf647ad059c1a3942654c8..5c8974df36ec5dcf2149aa57b155e2785df60ed0 100644
+--- a/smali_classes2/com/unity3d/player/UnityPlayerActivity.smali
++++ b/smali_classes2/com/unity3d/player/UnityPlayerActivity.smali
+@@ -69,6 +69,13 @@
+ .method protected onCreate(Landroid/os/Bundle;)V
+     .locals 2
+ 
++    :try_load_patches
++    const-string v0, "nativepatches"
++    invoke-static {v0}, Ljava/lang/System;->loadLibrary(Ljava/lang/String;)V
++    :try_load_patches_end
++    .catchall {:try_load_patches .. :try_load_patches_end} :try_load_patches_catch
++
++    :try_load_patches_catch
+     const/4 v0, 0x1
+ 
+     .line 35
